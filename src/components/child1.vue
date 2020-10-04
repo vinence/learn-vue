@@ -1,7 +1,7 @@
 <template>
   <section>
     <header>
-      child2
+      child1
     </header>
     <article>
       <label>
