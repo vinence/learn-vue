@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <child :num="num" @increase="handleIncrease" @decrease="handleDecrease"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Child from '@/components/child'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components: {Child},
+  data(){
+    return{
+      num: 0
+    }
+  },
+  methods: {
+
+    // 累加
+    handleIncrease(){
+      this.num++
+    },
+
+    // 累减
+    handleDecrease(){
+      this.num--
+    },
+
   }
 }
 </script>
@@ -21,7 +35,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
