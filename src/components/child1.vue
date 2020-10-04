@@ -7,7 +7,7 @@
       <label>
         <input type="text" v-model="child1" @input="$bus.emit('child1Change', $event.target.value)"/>
       </label>
-      <div>{{ child2 }}</div>
+      <div>来自child2的信息：{{ child2 }}</div>
     </article>
   </section>
 </template>
