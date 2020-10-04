@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <child :num="num"/>
+    <child :num="num" @increase="handleIncrease" @decrease="handleDecrease"/>
   </div>
 </template>
 
 <script>
-import Child from './components/Child'
-
+import Child from '@/components/child'
 export default {
   name: 'App',
   components: {Child},
@@ -14,6 +13,19 @@ export default {
     return{
       num: 0
     }
+  },
+  methods: {
+
+    // 累加
+    handleIncrease(){
+      this.num++
+    },
+
+    // 累减
+    handleDecrease(){
+      this.num--
+    },
+
   }
 }
 </script>
