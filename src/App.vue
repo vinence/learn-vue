@@ -1,13 +1,44 @@
 <template>
   <div id="app">
-    <div>VUE知识点梳理</div>
-    <div>每个分支都是一个知识点</div>
+    <parent ref="parent" :num="num">
+      <template v-slot:parentDecrease>
+        <button @click="handleChildDecrease">-</button>
+      </template>
+      <template v-slot:parentIncrease>
+        <button @click="handleChildIncrease">+</button>
+      </template>
+    </parent>
   </div>
 </template>
 
 <script>
+import Parent from "@/components/Parent";
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Parent},
+  data(){
+    return{
+      num: 0
+    }
+  },
+  methods: {
+
+    // 累加
+    handleIncrease(){
+      this.num++
+    },
+
+    // 累减
+    handleDecrease(){
+      this.num--
+    },
+    handleChildIncrease(){
+      this.$refs.parent.$refs.child.childNum++
+    },
+    handleChildDecrease(){
+      this.$refs.parent.$refs.child.childNum--
+    }
+  }
 }
 </script>
 
@@ -16,12 +47,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #fff;
-  text-align: center;
-  min-height: 100px;
-  background-color: #2c3e50;
-  margin: 100px auto;
-  font-size: 40px;
-  line-height: 100px;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
